@@ -1,0 +1,17 @@
+import greenfoot.*;
+/**
+ * GameOver implaments the image screen "Game Over" when the snake runs into the wall
+ * 
+ * Teresa Boehnke
+ * 6/4/18
+ */
+public class GameOver extends Actor
+{
+    public GameOver() 
+    {
+       /**
+        * creates the red lettering of the "Game over" screen and the black rectangular backdrop
+        */
+        setImage(new GreenfootImage("Game Over", 48, Color.RED, Color.BLACK));
+    }    //end constructor
+}//end class GameOver
