@@ -1,22 +1,3 @@
-Skip to content
-Microsoft is acquiring GitHub! Read our blog and Satya Nadella's post to learn more.
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @Teresa-Boehnke
-Sign out
-0
-0 0 Teresa-Boehnke/AP-CSA-2018-Final-Boehnke-
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-AP-CSA-2018-Final-Boehnke-/Food
-3613f07  7 minutes ago
-@Teresa-Boehnke Teresa-Boehnke Create Food
-     
-22 lines (21 sloc)  530 Bytes
 import greenfoot.*;
 /**
  * Class Food holds the green food that the snake eats to grow
@@ -38,16 +19,4 @@ public class Food extends Actor
         setImage(apple);
     }//end constructor Food
 }//end public class Food
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
-Press h to open a hovercard with more details.
+
