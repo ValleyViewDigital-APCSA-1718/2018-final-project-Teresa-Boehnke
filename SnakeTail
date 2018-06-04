@@ -1,0 +1,31 @@
+import greenfoot.*;
+/**
+ * SnakeTail grows when SnakeHead eats food
+ * 
+ * Teresa Boehnke
+ * 6/4/18
+ */
+public class SnakeTail extends Actor
+{
+    private int trailer =  0;
+    private int howLongYouLive;
+    
+    public SnakeTail(int howLongYouLive)
+    {
+        /**
+         * sets the size of one tail peice to one cell
+         */
+        GreenfootImage trailer = new GreenfootImage(20,20);
+        trailer.fill();
+        setImage(trailer);
+        this.howLongYouLive = howLongYouLive;
+    }//end constructor Tail
+    public void act() 
+    {
+        if(trailer == howLongYouLive)
+        {
+            getWorld().removeObject(this);
+        }//end if statement
+        trailer++;
+    }//end actor
+}//end public class Tail
