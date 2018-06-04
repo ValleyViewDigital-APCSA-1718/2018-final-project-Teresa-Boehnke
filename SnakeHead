@@ -1,0 +1,95 @@
+import greenfoot.*;
+/**
+ * SnakeHead is the moveable part that eats food
+ * 
+ * Teresa Boehnke
+ * 6/4/18
+ */
+public class SnakeHead extends Actor
+{
+    private final int EAT = 0;
+    private final int SOGGY = 90;
+    private final int WAFFLES = 180;
+    private final int NEVER = 270;
+    private final int SLITHER = 10;
+    private int counter = 0;
+    private int digesting = 0;
+    
+    public SnakeHead()
+    {
+        /**
+         * sets the head of the snake to one cell size and colored black
+         * allows start at random point and direction at the beginning of the game
+         */
+        GreenfootImage fangs = new GreenfootImage (20,20);
+        fangs.fill();
+        setImage(fangs);
+        setRotation(Greenfoot.getRandomNumber(4)*90);
+    }//end constructor SnakeHead
+    public void act() 
+    {
+        MoveAround();
+        while(isTouching(Food.class))
+        {
+            /**
+             * removes the apple when the snake touches, "eats," it
+             * replaces food with new apple in random location
+             */
+            removeTouching(Food.class);
+            digesting++;
+            SnakeWorld world = (SnakeWorld)getWorld();
+            world.addFood();
+        } //end while statement
+        if(facingEdge())
+        {
+            /**
+             *  sets the game over screen for when the snake runs into the wall
+             *  sets the size of the new object, the "Game over" screen
+             */
+            World myWorld = getWorld();
+            GameOver molt = new GameOver();
+            myWorld.addObject(molt, myWorld.getWidth()/2, myWorld.getHeight()/2);
+            Greenfoot.stop();
+        }//end while
+    }//end act()
+    private boolean facingEdge()
+    {
+        switch(getRotation())
+        {
+            case EAT: return getX() == getWorld().getWidth()-1;
+            case SOGGY: return getY() == getWorld().getWidth()-1;
+            case WAFFLES: return getX() == 0;
+            case NEVER: return getY() == 0;
+        }//end switch
+        return false;
+    }//end facingEdge
+    public void MoveAround()
+    {
+        counter++;
+        while(counter==SLITHER)
+        {
+            getWorld().addObject(new SnakeTail(digesting*SLITHER), getX(), getY());
+            move(1);
+            counter = 0;
+        }//end if
+        /**
+         * sets what arrow key movces the snake in a designated direction
+         */
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setRotation(EAT);
+        }//end if
+        else if (Greenfoot.isKeyDown("left"))
+        {
+            setRotation(WAFFLES);
+        }//end if
+        else if (Greenfoot.isKeyDown("down"))
+        {
+            setRotation(SOGGY);
+        }//end if
+        else if (Greenfoot.isKeyDown("up"))
+        {
+            setRotation(NEVER);
+        }//end if
+    }//end MoveAround constructor
+}//end public class Head
